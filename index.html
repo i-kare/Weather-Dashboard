@@ -11,7 +11,7 @@
     rel="stylesheet" />
 
   <!--jass and css files-->
-  <link rel="stylesheet" href="jass.css" />
+  
   <link rel="stylesheet" href="style.css" />
 </head>
 
@@ -19,41 +19,75 @@
   <!--<div class="flex-row align-center justify-center min-100-vh bg-primary">
     <div class="col-12 col-md-9 flex-column align-center bg-light p-5">>-->
 
-
+      
   <header class="main-header">
     <h1>Weather Dashboard</h1>
-    <main>
-      <section id="search-area-title" class="search-area" <h2 class="search-area-title">
-        </h2>
+   
+    
+ <main>
+ <section id="search-container" class="container-fluid col-sm text-center">
+      
+          <aside> 
+      <section id="search-area-title" class="search-area">
         <h2> Search for city:</h2>
         
-        <form id="search-form" class="form w-100">
           <!--search bar and button-->
-          <input id="search-input" class="form-input w-100" type="text" placeholder="Search!">
+          <input id="search-input" class="form-input w-100" type="text" placeholder="Sacramento"></input>
           <button class="btn searchBtn btn-info btn-block" id="fetch-button">Search</button>
-
+          <p id="search-history">
+          <button class="btn search-historyBtn btn-info btn-block" id="search-history1">?</button></p>
+          <form id="search-form" class="form w-100"></section>
           <!--Search has 2 children.1 child has 1 card. 1 child has 5 cards. All cards have the same id.-->
-          <section class="search-area-title-children">
+          
+        
+          <section class="search-area-title-children" id="search-area-title-children">
+      </aside>
+    
+</section>
+  
+    <div id="card-container"class="container-fluid col-lg pt-5">
+        <div id="card-display" class="row">
 
             <section class="today's-forecast">
               <h2 class="todays-forecast-title">Today's Forecast</h2>
-              <p id="todays-forecast-info" class="card"> hello </p>
-              <!--needs location,date, and weather information and icon-->
-
+              <section class="todays-forecast-children" id="todays-forecast-children">
+              
+                <card id="day0card"> 
+              <img id="today-weather-icon" src="" alt="today-weather-icon">
+              <p id="todays-forecast-info" class="card"></p></card>
+            </section>
+            
               <section class="five-day-forecast">
-                <h2 class="five-day-forecast-title">5 Day Forecast</h2>
-                <section class="five-day-forecast-children">
-                  <section id="card" class="card"> a </section>
-                  <section id="card" class="card"> b </section>
-                  <section id="card" class="card"> c </section>
-                  <section id="card" class="card"> d </section>
-                  <section id="card" class="card"> e </section>
+                <h2 class="five-day-forecast-title">5-Day Forecast:</h2>
+                <section class="five-day-forecast-children" id="five-day-forecast-children">
+                 
+                  <card id="day1card"> 
+                  <img id="day-1-weather-icon" src="" alt="day-1-weather-icon">
+                  <p id="day-1" class="card"></p></card>
+                  
+                  <card id="day2card">  
+                  <img id="day-2-weather-icon" src="" alt="day-2-weather-icon">
+                  <p id="day-2" class="card"> b </p></card>
 
-                  <!--need  cards each with location,date, and weather information and icon-->
+
+                  <card id="day3card">  
+                  <img id="day-3-weather-icon" src="" alt="day-3-weather-icon">
+                  <p id="day-3" class="card"> c </p></card>
+
+
+                  <card id="day4card">  
+                  <img id="day-4-weather-icon" src="" alt="day-4-weather-icon">
+                  <p id="day-4" class="card"> d </p></card>
+
+                  <card id="day5card">  
+                  <img id="day-5-weather-icon" src="" alt="day-5-weather-icon">
+                  <p id="day-5" class="card"> e </p></card>
+                  
                 </section>
-
               </section>
-    </main>
+     
+</main>
+  
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/dayjs@1.11.3/dayjs.min.js"
     integrity="sha256-iu/zLUB+QgISXBLCW/mcDi/rnf4m4uEDO0wauy76x7U=" crossorigin="anonymous"></script>
