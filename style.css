@@ -34,7 +34,14 @@ aside {
 }
 
 .historyBtn {
-  background-color: lightgrey !important;
+  background-color: lightgrey;
+  color: black;
+  border-radius: 5px;
+  height: 50px;
+  border: none;
+  font-size: 20px;
+  flex-grow: 1;
+  margin-top: 15px;
 }
 
 .search-history {

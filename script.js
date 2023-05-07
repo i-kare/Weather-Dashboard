@@ -39,16 +39,23 @@ $(function () {
     console.log(event);
     event.preventDefault();
     let userInput = $(`#search-input`).val();
-    if (localStorage.getItem("cityList") === null) {
-      localStorage.setItem("cityList", userInput);
-    } else {
-      localStorage.setItem(
-        "cityList",
-        localStorage.getItem("cityList") + "," + userInput
-      );
-    }
 
+    // make sure they did enter something
     if (userInput.length !== 0) {
+      if (localStorage.getItem("cityList") === null) {
+        localStorage.setItem("cityList", userInput);
+      } else {
+        localStorage.setItem(
+          "cityList",
+          localStorage.getItem("cityList") + "," + userInput
+        );
+      }
+
+      // make sure to add the button now so the UI is updated when the search button is clicked
+      $(".search-history").append(
+        `<button class='historyBtn' id='${userInput}'>${userInput}</button>`
+      );
+
       await getWeatherInfo(userInput);
       setWeatherInfo(userInput);
     }
@@ -93,8 +100,7 @@ $(function () {
     return fetch(queryURL)
       .then((response) => response.json())
       .then((res) => {
-        console.log(res); // we need set this in the local storage
-
+        // set the variables from the response
         temp = convertToFahrenheit(res.list[0].main.temp);
         humidity = res.list[0].main.humidity;
         wind = res.list[0].wind.speed;
@@ -127,27 +133,26 @@ $(function () {
       });
   };
 
-  const onHistoryClick = async (event) => {
-    event.preventDefault();
-    //retrieve the element from the search history
-    // we will need to set the variables of temp -> temp5
-    // then we will need to call setWeatherInfo with the new city
-  };
-
+  //add the previous search history as buttons to the page
   const setSavedSearchHistory = () => {
     if (localStorage.getItem("cityList") !== null) {
       let cities = localStorage.getItem("cityList").split(",");
       for (let i = 0; i < cities.length; i++) {
         $(".search-history").append(
-          `<button class='searchBtn historyBtn' id='fetch-button'>${cities[i]}</button>`
+          `<button class='historyBtn' id='${cities[i]}'>${cities[i]}</button>`
         );
       }
     }
-    // localStorage.setItem(city,
-    // search
-    // add an item to the localStorage search history
-    // each element will have its own api information
   };
+
+  // any time any of the buttons in search history is clicked, this will fetch the weather information from the api and set it to the page
+  $(".search-history").on("click", ".historyBtn", async (event) => {
+    event.preventDefault();
+    if (event.target.id) {
+      await getWeatherInfo(event.target.id);
+      setWeatherInfo(event.target.id);
+    }
+  });
 
   // set the day of the week
   todayTitle.text(`
