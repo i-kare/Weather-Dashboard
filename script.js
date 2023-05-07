@@ -36,6 +36,7 @@ $(function () {
 
   // on click of the search button, this will fetch the weather information from the api and set it to the page
   searchButton.click(async (event) => {
+    console.log(event);
     event.preventDefault();
     let userInput = $(`#search-input`).val();
     if (localStorage.getItem("cityList") === null) {
@@ -93,7 +94,6 @@ $(function () {
       .then((response) => response.json())
       .then((res) => {
         console.log(res); // we need set this in the local storage
-        localStorage.setItem(city, res);
 
         temp = convertToFahrenheit(res.list[0].main.temp);
         humidity = res.list[0].main.humidity;
@@ -134,8 +134,14 @@ $(function () {
     // then we will need to call setWeatherInfo with the new city
   };
 
-  const setSavedSearchHistory = (city) => {
+  const setSavedSearchHistory = () => {
     if (localStorage.getItem("cityList") !== null) {
+      let cities = localStorage.getItem("cityList").split(",");
+      for (let i = 0; i < cities.length; i++) {
+        $(".search-history").append(
+          `<button class='searchBtn historyBtn' id='fetch-button'>${cities[i]}</button>`
+        );
+      }
     }
     // localStorage.setItem(city,
     // search

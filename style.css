@@ -33,6 +33,15 @@ aside {
   margin-bottom: 15px;
 }
 
+.historyBtn {
+  background-color: lightgrey !important;
+}
+
+.search-history {
+  display: flex;
+  flex-direction: column;
+}
+
 .searchBtn {
   background-color: lightskyblue;
   color: black;
@@ -40,6 +49,8 @@ aside {
   height: 50px;
   border: none;
   font-size: 20px;
+  flex-grow: 1;
+  margin-top: 15px;
 }
 
 #search-input {
