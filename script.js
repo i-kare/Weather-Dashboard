@@ -92,7 +92,7 @@ $(function () {
     console.log(city);
     var weatherForecastAPIKey = "c9961134407de338be62f6576521eff1";
     var queryURL =
-      "http://api.openweathermap.org/data/2.5/forecast?q=" +
+      "https://api.openweathermap.org/data/2.5/forecast?q=" +
       city +
       "&appid=" +
       weatherForecastAPIKey;
