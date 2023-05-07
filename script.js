@@ -32,19 +32,6 @@ $(function () {
     return ((temp * 9) / 5 - 459.67).toFixed(2);
   };
 
-  // set the day of the week
-  todayTitle.text(`
-    ${defaultCity} (${todaysDate.format("M/D/YYYY")})
-  `);
-
-  // get 5 days from today and set the text
-  for (let i = 1; i < 6; i++) {
-    const daily = todaysDate.add(i, "day");
-    $(`#day-${i}-title`).text(`
-    ${daily.format("M/D/YYYY")}
-    `);
-  }
-
   searchButton.click(async (event) => {
     event.preventDefault();
     let userInput = $(`#search-input`).val();
@@ -126,4 +113,24 @@ $(function () {
   };
 
   const saveSearchHistory = (city) => {};
+
+  // set the day of the week
+  todayTitle.text(`
+    ${defaultCity} (${todaysDate.format("M/D/YYYY")})
+  `);
+
+  // get 5 days from today and set the text
+  for (let i = 1; i < 6; i++) {
+    const daily = todaysDate.add(i, "day");
+    $(`#day-${i}-title`).text(`
+    ${daily.format("M/D/YYYY")}
+    `);
+  }
+
+  const setDefault = async () => {
+    await getWeatherInfo(defaultCity);
+    setWeatherInfo(defaultCity);
+  };
+
+  setDefault();
 });
