@@ -1,115 +1,83 @@
 * {
-    box-sizing: border-box;
-  }
+  box-sizing: border-box;
+}
 
 body {
-    font-family: 'Times New Roman', Times, serif;
-    font-size: medium;
-    margin: 0;
+  font-family: "Times New Roman", Times, serif;
+  font-size: medium;
+  margin: 0;
 }
 
-h1{
-     background-image: linear-gradient(to right, rgb(0, 103, 213), rgb(3, 3, 86));
-     text-align: center;
-     color: aliceblue;
-    }
+h1 {
+  background-image: linear-gradient(to right, rgb(0, 103, 213), rgb(3, 3, 86));
+  text-align: center;
+  color: aliceblue;
+}
 
 aside {
-        display: block;
-      }
-    
-
-      #search-area-title{
-        float: left;
-        width: 15%;
-        height: fit-content;
-        border-radius: 5px;
-        text-decoration: solid;
-        margin-top: 10px;
-        margin-left: 10px;
-      }
-      
-      #card-container{
-        float:right;
-        width: 60%;
-        height: fit-content;
-        padding: 10px;
-        margin-right: 5%;
-        border-radius: 5px;
-        
-     
-        
-    }
-
-
-#todays-forecast-children{
-    display: flex;
-    flex-wrap: wrap;
-    flex-direction: column;
-}   
-
-#day0card{
-    background-color: rgb(251, 251, 251);
-    border-style: double;
-    border-start-end-radius: 20px;
-    border-color: black;
-    margin: 15px;
- 
+  display: block;
 }
 
-#five-day-forecast-children{
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    
-
-}  
-
-#day1card{
-    background-color: rgb(75, 86, 133);
-    border-style: double;
-    border-start-end-radius: 20px;
-    border-color: black;
-    margin: 15px;
-   
-}
- 
-#day2card{
-    background-color: rgb(75, 86, 133);
-    border-style: double;
-    border-start-end-radius: 20px;
-    border-color: black;
-    margin: 15px;
-   
+#search-area-title {
+  float: left;
+  width: 15%;
+  height: fit-content;
+  border-radius: 5px;
+  text-decoration: solid;
+  margin-top: 10px;
+  margin-left: 10px;
 }
 
-#day3card{
-    background-color: rgb(75, 86, 133);
-    border-style: double;
-    border-start-end-radius: 20px;
-    border-color: black;
-    margin: 15px;
-   
+.card-title {
+  font-size: 36px;
+  display: flex;
+  margin-top: 4px;
 }
 
-#day4card{
-    background-color: rgb(75, 86, 133);
-    border-style: double;
-    border-start-end-radius: 20px;
-    border-color: black;
-    margin: 15px;
-    
-   
+#card-container {
+  float: right;
+  width: 60%;
+  height: fit-content;
+  padding: 10px;
+  margin-right: 5%;
+  border-radius: 5px;
 }
 
-
-#day5card{
-    background-color: rgb(75, 86, 133);
-    border-style: double;
-    border-start-end-radius: 20px;
-    border-color: black;
-    margin: 15px;
-   
+#todays-forecast-children {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
 }
 
+#today-card {
+  background-color: rgb(251, 251, 251);
+  border-style: double;
+  border-start-end-radius: 20px;
+  border-color: black;
+  margin: 15px;
+}
 
+#five-day-forecast-children {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  color: white;
+}
+
+.card {
+  background-color: rgb(75, 86, 133);
+  border-style: double;
+  border-start-end-radius: 20px;
+  border-color: black;
+  margin: 15px;
+}
+
+.today-title {
+  display: flex;
+  margin: 6px;
+  font-size: 40px;
+}
+
+.today-header {
+  display: flex;
+}
