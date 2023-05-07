@@ -1,4 +1,5 @@
 $(function () {
+  // declare all the default variables we will need
   var todayTitle = $(".today-title");
   var searchButton = $("#fetch-button");
   var defaultCity = "Davis";
@@ -28,13 +29,23 @@ $(function () {
   var icon5 = null;
   var todaysDate = dayjs();
 
+  // the api returns kelvin so we will return in fahrenheit instead
   const convertToFahrenheit = (temp) => {
     return ((temp * 9) / 5 - 459.67).toFixed(2);
   };
 
+  // on click of the search button, this will fetch the weather information from the api and set it to the page
   searchButton.click(async (event) => {
     event.preventDefault();
     let userInput = $(`#search-input`).val();
+    if (localStorage.getItem("cityList") === null) {
+      localStorage.setItem("cityList", userInput);
+    } else {
+      localStorage.setItem(
+        "cityList",
+        localStorage.getItem("cityList") + "," + userInput
+      );
+    }
 
     if (userInput.length !== 0) {
       await getWeatherInfo(userInput);
@@ -42,6 +53,7 @@ $(function () {
     }
   });
 
+  //jquery functions to set the weather text
   const setWeatherText = async (day, temp, wind, humidity, icon) => {
     $(`#day-${day}-weather-icon`).attr(
       "src",
@@ -52,6 +64,7 @@ $(function () {
     $(`#day-${day}-humidity`).text(`Humidity: ${humidity} %`);
   };
 
+  // this will prefill the page with the information we received from the api
   const setWeatherInfo = async (userInput) => {
     if (temp && wind && humidity) {
       todayTitle.text(`
@@ -66,6 +79,7 @@ $(function () {
     }
   };
 
+  // api call for weather information and to set all 6 day forecast
   const getWeatherInfo = (city) => {
     console.log(city);
     var weatherForecastAPIKey = "c9961134407de338be62f6576521eff1";
@@ -78,7 +92,8 @@ $(function () {
     return fetch(queryURL)
       .then((response) => response.json())
       .then((res) => {
-        console.log(res);
+        console.log(res); // we need set this in the local storage
+        localStorage.setItem(city, res);
 
         temp = convertToFahrenheit(res.list[0].main.temp);
         humidity = res.list[0].main.humidity;
@@ -112,7 +127,21 @@ $(function () {
       });
   };
 
-  const saveSearchHistory = (city) => {};
+  const onHistoryClick = async (event) => {
+    event.preventDefault();
+    //retrieve the element from the search history
+    // we will need to set the variables of temp -> temp5
+    // then we will need to call setWeatherInfo with the new city
+  };
+
+  const setSavedSearchHistory = (city) => {
+    if (localStorage.getItem("cityList") !== null) {
+    }
+    // localStorage.setItem(city,
+    // search
+    // add an item to the localStorage search history
+    // each element will have its own api information
+  };
 
   // set the day of the week
   todayTitle.text(`
@@ -127,10 +156,13 @@ $(function () {
     `);
   }
 
+  // function to set the default city
   const setDefault = async () => {
     await getWeatherInfo(defaultCity);
     setWeatherInfo(defaultCity);
   };
 
+  // call default city so we can have something to display
   setDefault();
+  setSavedSearchHistory();
 });

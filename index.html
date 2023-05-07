@@ -18,22 +18,19 @@
   <header class="main-header">
     <h1>Weather Dashboard</h1>
     <main>
-      <section id="search-container" class="container-fluid col-sm text-center">
-        <aside>
-          <section id="search-area-title" class="search-area">
-            <h2> Search for city:</h2>
-            <input id="search-input" class="form-input w-100" type="text" placeholder="Sacramento"></input>
-            <button class="btn searchBtn btn-info btn-block" id="fetch-button">Search</button>
-          </section>
+      <section id="search-container">
+        <section id="search-area-title" class="search-area">
+          <h2 id="search-title"> Search for a City:</h2>
+          <input id="search-input" type="text" placeholder="Sacramento"></input>
+          <button class="searchBtn" id="fetch-button">Search</button>
+        </section>
 
-          <section class="search-history" id="search-area-title-children">
-          </section>
-        </aside>
-
+        <section class="search-history" id="search-area-title-children">
+        </section>
       </section>
 
-      <div id="card-container" class="container-fluid col-lg pt-5">
-        <div id="card-display" class="row">
+      <div id="card-container">
+        <div id="card-display">
           <section class="today's-forecast">
             <section class="todays-forecast-children" id="todays-forecast-children">
               <card id="today-card">
