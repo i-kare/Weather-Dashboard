@@ -19,3 +19,7 @@
 ## References
 
 1. https://openweathermap.org/forecast5
+
+## Screenshot of App
+
+![Weather App](weather-dashboard.png)
